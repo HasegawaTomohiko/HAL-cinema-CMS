@@ -4,6 +4,7 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2'); // mysql2ライブラリをインポート
+const cors = require('cors');
 
 const app = express();
 const port = 4000;
@@ -46,6 +47,7 @@ const scheduleRouter = require('./routers/scheduleRoute');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cors());
 
 app.use('/movie', movieRouter);
 app.use('/cms', cmsRouter);

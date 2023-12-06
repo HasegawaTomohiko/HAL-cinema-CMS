@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt'); // 必要ならばbcryptを追加
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, '/Applications/XAMPP/xamppfiles/htdocs/halcinema2/HALcinema2/image/movie');
+    cb(null, 'C:/xampp/htdocs/HAL-cinema/image/movie');
   },
   filename: (req, file, cb) => {
     const ext = file.originalname.split('.').pop();
