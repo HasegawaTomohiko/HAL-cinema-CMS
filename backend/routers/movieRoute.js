@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
 
 
   //ここから欲しいデータの取得するクエリを書いていく
-  pool.query('SELECT * FROM movie', (error, results, fields) => {
+  pool.query('SELECT * FROM movie', (error, results) => {
     if (error) throw error;
     res.json(results);
   });
@@ -43,12 +43,12 @@ router.post('/', upload.fields([{ name : 'movieImage', maxCount : 1}]), (req, re
 
   const query = 'INSERT INTO movie (movieID, movieName, movieContext, movieImagePath ,movieLenght) VALUES (?,?,?,?,?)';
 
-  pool.query(query, [movieID,movieName,movieContext,movieImageName,movieLenght], (error, results, fields) => {
+  pool.query(query, [movieID,movieName,movieContext,movieImageName,movieLenght], (error) => {
     if (error) {
       console.error(error);
       res.status(500).json({ error: 'Internal Server Error' });
     } else {
-      res.json({ msg: '新規追加しました！' });
+      res.json({ msg: '新規登録しました！' });
     }
   });
 });
