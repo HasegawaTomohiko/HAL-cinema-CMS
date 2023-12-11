@@ -21,15 +21,14 @@ export default function schedule(props) {
 
 return (
   <>
-  
-  <SampleSideMenu menutitle="スケジュール情報"/>
+    <SampleSideMenu menutitle="スケジュール情報"/>
 
-  <BasicModalButton onClick={btnClick}/>
-  <BasicModal open={open} onClose={formClose}/>
-  <ScrollableTabsButtonAuto />
-  <ScrollableTabsButtonAuto2 />
+      <BasicModalButton onClick={btnClick}/>
+      <BasicModal open={open} onClose={formClose}/>
+      <ScrollableTabsButtonAuto />
+      <ScrollableTabsButtonAuto2 />
 
-  <CustomizedTables />
+    <CustomizedTables />
 
   </>
 );
