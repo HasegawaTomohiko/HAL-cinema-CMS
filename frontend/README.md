@@ -1,5 +1,10 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+http-proxy = "http://proxy01.nagoya.hal.ac.jp:8080"
+
+https-proxy = "http://proxy01.nagoya.hal.ac.jp:8080/"
+proxy = "http://proxy01.nagoya.hal.ac.jp:8080/"
+
 ## Getting Started
 
 First, run the development server:
