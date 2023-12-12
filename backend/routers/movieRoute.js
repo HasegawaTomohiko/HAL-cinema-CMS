@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt'); // 必要ならばbcryptを追加
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'C:/xampp/htdocs/HAL-cinema/image/movie');
+    cb(null, 'C:/xampp/htdocs/HAL-cinema/image/movie/');
   },
   filename: (req, file, cb) => {
     const ext = file.originalname.split('.').pop();
@@ -37,7 +37,6 @@ router.post('/', upload.fields([{ name : 'movieImage', maxCount : 1}]), (req, re
   const movieID = req.body.movieID;
   const movieContext = req.body.movieContext;
   const movieName = req.body.movieName;
-  //const moviemovieImagePath = req.body.movieImagePath;
   const movieImageName = req.files.movieImage[0].filename;
   const movieLenght = req.body.movieLenght;
 
