@@ -5,7 +5,7 @@ export default function index(){
       <h1>Hello world!!!</h1>
       <Link href="/next">
         next
-        hghg
+        hg
       </Link>
     </>
   );
