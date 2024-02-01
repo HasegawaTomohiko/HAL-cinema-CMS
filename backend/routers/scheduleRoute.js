@@ -67,4 +67,35 @@ router.put('/:scheduleID', (req, res) => {
   }
 });
 
+// GETリクエスト - 現在時刻から24時までの1日の映画スケジュール情報を取得
+router.get('/today', (req, res) => {
+  const pool = req.mysql;
+
+  // 現在の日時を取得
+  const currentDateTime = moment().tz('Asia/Tokyo');
+
+  // 今日の日付をフォーマット
+  const currentDate = currentDateTime.format('YYYY-MM-DD');
+
+  // 24時までのスケジュール情報を取得するクエリ
+  const query = 'SELECT s.scheduleID, m.movieName, s.screenID, s.scheduleStartDatetime FROM schedule s JOIN movie m ON s.movieID = m.movieID WHERE DATE(s.scheduleStartDatetime) = ? AND s.scheduleStartDatetime <= ? ORDER BY s.scheduleStartDatetime';
+
+  // 24時までの時刻を計算
+  const endOfDay = currentDateTime.clone().endOf('day').format();
+
+  // クエリの実行
+  pool.query(query, [currentDate, endOfDay], (error, results, fields) => {
+    if (error) {
+      console.error(error);
+      return res.status(500).json({ error: 'サーバーエラー' });
+    }
+
+    const schedules = results.map(schedule => ({
+      ...schedule,
+      scheduleStartDatetime: moment.tz(schedule.scheduleStartDatetime, 'Asia/Tokyo').format(),
+    }));
+    res.json(schedules);
+  });
+});
+
 module.exports = router;
