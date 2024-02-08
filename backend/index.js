@@ -42,6 +42,7 @@ app.use(session({
 const movieRouter = require('./routers/movieRoute');
 const cmsRouter = require('./routers/cmsRoute');
 const scheduleRouter = require('./routers/scheduleRoute');
+const reserveRouter = require('./routers/reserveRoute');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -51,6 +52,7 @@ app.use(cors());
 app.use('/movie', movieRouter);
 app.use('/cms', cmsRouter);
 app.use('/schedule', scheduleRouter);
+app.use('/reserve', reserveRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello World');
